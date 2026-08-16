@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 1. EDIT HERE: SEO Meta Tags & Browser Title -->
+    <title>ARTI YADAV | Personal Portfolio & Profile</title>
+    <meta name="description" content="Official portfolio of ARTI YADAV - Qualifications, Social Initiatives, and Technical Projects.">
+    <meta name="author" content="ARTI YADAV">
+
+    <!-- FontAwesome Icons for UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --card-bg: #ffffff;
+            --nav-bg: #0f172a;
+            --accent-color: #0284c7;
+            --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --border-color: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --card-bg: #1e293b;
+            --nav-bg: #020617;
+            --accent-color: #38bdf8;
+            --hero-bg: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: var(--nav-bg);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: var(--hero-bg);
+            color: #fff;
+            text-align: center;
+            padding: 90px 20px 70px;
+        }
+
+        .profile-photo {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #38bdf8;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .typing-text {
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .btn-container {
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin: 5px;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        /* Section Layouts */
+        .section {
+            padding: 80px 8%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Skill Badges */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-badge {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        th {
+            background: rgba(2, 132, 199, 0.1);
+            color: var(--accent-color);
+        }
+
+        /* Contact Form */
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--nav-bg);
+            color: #94a3b8;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.4rem;
+            margin: 0 12px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* Floating Scroll Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 99;
+        }
+/* Floating Share Button Styling (Right Side Corner) */
+.share-float {
+    position: fixed;
+    bottom: 85px; /* Scroll button ke theek upar */
+    right: 30px;
+    background: #38bdf8;
+    color: #0f172a;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 999;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.share-float:hover {
+    transform: scale(1.1);
+    background: #0284c7;
+    color: #fff;
+}
+    </style>
+</head>
+<body>
+
+    <!-- 1. Header Navigation -->
+    <nav>
+        <div class="logo">ARTI YADAV</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#blogs">Articles</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="theme-toggle" id="themeToggle" title="Theme Switcher"><i class="fas fa-moon"></i></button></li>
+        </ul>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section class="hero">
+        <div>
+            <!-- GitHub repo mein photo ka name profile.jpg hi rakhein -->
+            <img src="C:\Users\Arti Yadav\OneDrive\Documents\yadav.jpeg" alt="Profile Photo" class="profile-photo">
+        </div>
+        <h2><i>Hello,I am <span style="color:#38bdf8;">ARTI YADAV</span></i></h2>
+        <p>I am a <span class="typing-text" id="typing"></span></p>
+         
+        <div class="btn-container">
+            <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Get In Touch</a>
+            <!-- Drive Link yahan '#' ki jagah paste karein -->
+            <a href="https://drive.google.com/file/d/1Tn1mmX_BHJoPPINVLvNlDCqkN1OSidUF/view?usp=drivesdk" target="_blank" class="btn btn-secondary"><i class="fas fa-file-download"></i> Download Resume</a>
+        </div>
+    </section>
+
+    <!-- 3. About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">ABOUT ME</h2>
+        <div class="card">
+            <p>Main ek dedicated student hoon jo technology aur social development ke field mein deep interest rakhta hoon. Mera vision society ke grass-root level par positive impact lana hai, khas karke education initiatives aur public administrative welfare ke zariye.</p>
+        </div>
+    </section>
+
+    <!-- 4. Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Key Skills & Expertise</h2>
+        <div class="card">
+            <div class="skills-container">
+                <span class="skill-badge"><i class="fas fa-code"></i> Web Development</span>
+                <span class="skill-badge"><i class="fas fa-brain"></i> Problem Solving</span>
+                <span class="skill-badge"><i class="fas fa-balance-scale"></i> Public Policy</span>
+                <span class="skill-badge"><i class="fas fa-graduation-cap"></i> Educational Outreach</span>
+                <span class="skill-badge"><i class="fas fa-seedling"></i> Agricultural Tech Awareness</span>
+                <span class="skill-badge"><i class="fas fa-users"></i> Community Leadership</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Education Section -->
+    <section id="education" class="section">
+        <h2 class="section-title">Education & Qualifications</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Degree / Course</th>
+                    <th>Institute / College</th>
+                    <th>Medium/ Board </th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><i class="fas fa-graduation-cap"></i> B.Tech</td>
+                    <td>SRIMT COLLEGE</td>
+                     <td>English Medium</td>
+                    <td>2024 - 2028</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-school"></i> IT Foundation Course"O LEVEL"</td>
+                    <td>National Institute Of Electronics & Information Technology(NIELIT)</td>
+                     <td>English Medium</td>
+                    <td>2025</td>
+                </tr>
+
+                <tr>
+                    <td><i class="fas fa-school"></i> Higher Secondary (12th)</td>
+                    <td>SR GLOBAL SCHOOL</td>
+                    <td>CBSE Board</td>
+                    <td>2023</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-school"></i> High School (10th)</td>
+                    <td>SR GLOBAL SCHOOL</td>
+                     <td>CBSE Board</td>
+                    <td>2021</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 6. Vision & Mission Section -->
+    <section id="vision" class="section">
+        <h2 class="section-title">My Vision & Mission</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-bullseye" style="color:var(--accent-color);"></i> Vision</h3>
+                <p>Technology aur public administration ka balance use karke grassroot level par education accessibility aur agricultural community ko support karna.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-hands-helping" style="color:var(--accent-color);"></i> Core Values</h3>
+                <p>Integrity, Innovation, Social Welfare, Inclusive Growth, aur Community Empowerment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title">Key Projects & Focus Areas</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-seedling" style="color:var(--accent-color);"></i> Social & Educational Support</h3>
+                <p>Grass-root level educational support, farmer guidance initiatives, aur community awareness programs.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-laptop-code" style="color:var(--accent-color);"></i> Technical Project</h3>
+                <p>B.Tech level web applications aur technical problem-solving projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Articles & Insights Section -->
+    <section id="blogs" class="section">
+        <h2 class="section-title">Articles & Insights</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Technology in Education</h3>
+                <p>Kaise digital tools rural areas ke students tak quality education pouchane mein help kar rahe hain.</p>
+            </div>
+            <div class="card">
+                <h3>Digital Empowerment for Farmers</h3>
+                <p>Modern digital tools aur real-time market access information ka role Indian agriculture system mein.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">CONTACT ME</h2>
+        <div class="card contact-form">
+            <form action="#" method="POST">
+                <input type="text" placeholder="YOUR NAME" required>
+                <input type="email" placeholder="YOUR Email" required>
+                <textarea rows="5" placeholder="YOUR Message" required></textarea>
+                <button type="submit" class="btn" style="border:none; cursor:pointer; width:100%;">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 10. Footer Section -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/arti-yadav-744aa7297?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="YOUR_GITHUB_URL" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="YOUR_TWITTER_URL" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>© 2026 ARTI YADAV. All Rights Reserved.</p>
+    </footer>
+<!-- Floating Side Share Button (Right Corner) -->
+<div class="share-float" id="shareBtn" title="Share Portfolio">
+    <i class="fas fa-share-alt"></i>
+</div>
+    <!-- Scroll-to-Top Button -->
+    <div class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></div>
+
+    <!-- Scripts (Theme Toggle, Typing, Scroll, Visitor Tracker) -->
+    <script>
+        // 1. Dark/Light Theme Switcher
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+
+        // 2. Typing Effect Animation
+        const words = ["B.Tech Pursuing", "Civil Services Aspirant", "AI&ML Enthusiast"];
+        let i = 0;
+        let timer;
+
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('typing').innerHTML += word.shift();
+                } else {
+                    setTimeout(deletingEffect, 2000);
+                    return false;
+                }
+                timer = setTimeout(loopTyping, 100);
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('typing').innerHTML = word.join("");
+                } else {
+                    if (words.length > (i + 1)) {
+                        i++;
+                    } else {
+                        i = 0;
+                    }
+                    setTimeout(typingEffect, 500);
+                    return false;
+                }
+                timer = setTimeout(loopDeleting, 50);
+            };
+            loopDeleting();
+        }
+        typingEffect();
+
+        // 3. Scroll to Top Button Functionality
+        const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTop.style.display = 'flex';
+            } else {
+                scrollTop.style.display = 'none';
+            }
+        });
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+            // 4. DUAL VISITOR TRACKER (EMAIL ALERT + GOOGLE SHEET PERMANENT HISTORY)
+    window.addEventListener('DOMContentLoaded', () => {
+        fetch('https://ipapi.co/json/')
+          .then(response => response.json())
+          .then(data => {
+            const visitorData = {
+              time: new Date().toLocaleString(),
+              ip: data.ip || 'N/A',
+              city: data.city || 'N/A',
+              region: data.region || 'N/A',
+              country: data.country_name || 'N/A',
+              Notification: "Alert! Someone opened your portfolio website."
+            };
+
+            // [A] INSTANT EMAIL ALERT: 'YOUR_EMAIL_HERE' ko apne email se replace karein
+            fetch("https://formsubmit.co/ajax/yadavyadavarti112@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(visitorData)
+            });
+
+            // [B] PERMANENT GOOGLE SHEET HISTORY: 'YOUR_GOOGLE_APPS_SCRIPT_URL' ko Web App URL se replace karein
+            fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(visitorData)
+            });
+// 5. NATIVE WEB SHARE API (Share Button Functionality)
+const shareBtn = document.getElementById('shareBtn');
+shareBtn.addEventListener('click', async () => {
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: document.title,
+                text: 'Check out my professional portfolio and social initiatives!',
+                url: window.location.href
+            });
+            console.log('Website shared successfully');
+        } catch (err) {
+            console.log('Error sharing:', err);
+        }
+    } else {
+        // Agar kisi purane browser mein Web Share API support nahi karta, toh link copy ho jayega
+        navigator.clipboard.writeText(window.location.href);
+        alert('Website Link Copied! Ab aap ise kahin bhi paste karke share kar sakti hain.');
+    }
+});
+
+          })
+          .catch(err => console.log('Visitor Tracker Skipped:', err));
+    });
+                      
+    </script>
+</body>
+</html>
