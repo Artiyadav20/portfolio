@@ -14,6 +14,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* Screen size ke hisab se width fix karne ke liye */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden; /* Mobile par side scroll ko rokne ke liye */
+    width: 100%;
+}
+
+img {
+    max-width: 100%; /* Images screen se bahar na jayein */
+    height: auto;
+}
         :root {
             --bg-color: #f8fafc;
             --text-color: #0f172a;
