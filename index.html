@@ -340,43 +340,60 @@ img {
     color: var(--text-color, #fff);
     padding: 5px 10px;
 }
+/* Checkbox hide rahega */
+#menu-toggle {
+    display: none !important;
+}
 
-/* Mobile Screen Settings (768px se choti screens) */
+/* Laptop/Desktop par Hamburger Icon nahi dikhega */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-color, #fff);
+}
+
+/* Mobile Screen Settings (768px se kam) */
 @media screen and (max-width: 768px) {
-    /* Hamburger Icon Show Karein */
+    nav {
+        position: relative !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 20px !important;
+    }
+
+    /* Mobile par 3-Line Icon dikhega */
     .hamburger {
         display: block !important;
-        position: absolute;
-        top: 15px;
-        right: 20px;
         z-index: 1000;
     }
 
-    /* Menu Links Ko Default Me Hide Rakhein */
-    nav, .navbar, .nav-links {
+    /* Links Normal State me hide rahenge */
+    nav ul {
         display: none !important;
         flex-direction: column !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
         width: 100% !important;
-        background: var(--bg-color, #0f172a);
-        text-align: center;
+        background: var(--bg-color, #0f172a) !important;
         padding: 15px 0 !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        z-index: 999;
     }
 
-    /* Jab 3-Line Par Click Ho, Toh Menu Open Ho Jaye */
-    #menu-toggle:checked ~ nav,
-    #menu-toggle:checked ~ .navbar,
-    #menu-toggle:checked ~ .nav-links {
+    /* 3-Line Icon par click karne par menu open hoga */
+    #menu-toggle:checked ~ ul {
         display: flex !important;
     }
 
-    nav a, .navbar a, .nav-links a {
-        padding: 10px !important;
-        font-size: 16px !important;
-        display: block !important;
+    nav ul li {
+        margin: 10px 0 !important;
+        text-align: center;
     }
 }
-
-    /* Main Container & Hero Section Fix */
+  /* Main Container & Hero Section Fix */
     .container, section, .hero {
         width: 100% !important;
         max-width: 100% !important;
