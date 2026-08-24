@@ -28,6 +28,7 @@ img {
     max-width: 100%; /* Images screen se bahar na jayein */
     height: auto;
 }
+        
         :root {
             --bg-color: #f8fafc;
             --text-color: #0f172a;
@@ -325,6 +326,36 @@ img {
     transform: scale(1.1);
     background: #0284c7;
     color: #fff;
+}
+        /* Mobile Phones Ke Liye Screen Fix */
+@media screen and (max-width: 768px) {
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Header & Navigation Bar Fix */
+    nav, .navbar, header {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        width: 100% !important;
+        padding: 10px 5px !important;
+    }
+
+    nav a, .navbar a {
+        font-size: 14px !important;
+        margin: 5px !important;
+    }
+
+    /* Main Container & Hero Section Fix */
+    .container, section, .hero {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 10px !important;
+        box-sizing: border-box !important;
+    }
 }
     </style>
 </head>
